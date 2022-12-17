@@ -13,6 +13,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
+                
                 <div class="modal-body">
                     <form wire:submit.prevent="update()" method="post" enctype="multipart/form-data">
                         <div class="form-group">
