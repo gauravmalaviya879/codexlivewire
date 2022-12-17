@@ -10,6 +10,7 @@ use App\Models\group;
 
 class Grouplist extends Component
 {
+
     use WithFileUploads;
     // public $grouplist;
     public $name, $group_id, $logo, $description, $logox, $descriptionx, $namex;
@@ -29,13 +30,11 @@ class Grouplist extends Component
     }
     public function saveGroup()
     {
-
         $this->validate([
             'name' => 'required',
             'description' => 'required',
             'logo' => 'required',
         ]);
-
         $data = new group();
         $data->name = $this->name;
         $data->logo = $this->logo->store('uploads');
@@ -56,7 +55,6 @@ class Grouplist extends Component
     }
     public function delete($id)
     {
-
         $removedata =  group::where('group_id', $id);
         $imagpath = $removedata->first();
         unlink(storage_path('/app/public/' .  $imagpath->logo));
@@ -71,6 +69,7 @@ class Grouplist extends Component
             'descriptionx' => 'required',
             'logox' => 'required',
         ]);
+
         if ($this->group_id) {
             $data = group::where('group_id', $this->group_id);
             $groupdata = $data->first();
