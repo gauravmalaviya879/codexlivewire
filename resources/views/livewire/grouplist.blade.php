@@ -1,6 +1,6 @@
 <div>
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
-    {{-- gx dx --}}
+    {{-- crud oprtion --}}
     @include('livewire.savegroup')
     <!-- Modal -->
     <div wire:ignore.self class="modal fade" id="updateModal" tabindex="-1" role="dialog"
