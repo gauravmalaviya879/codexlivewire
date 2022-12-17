@@ -1,8 +1,5 @@
 <div>
     {{-- In work, do what you enjoy. --}}
-
-
-
     <div class="d-flex justify-content-center my-5">
         <div class="card p-4" style="width: 25rem">
             <form wire:submit.prevent="saveGroup" enctype="multipart/form-data">
@@ -27,7 +24,6 @@
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="form-group">
                         <label for="description">group description</label>
                         <input type="text" name="description" class="form-control" id="description"
@@ -36,7 +32,6 @@
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <button type="submit" class="btn btn-primary">submit</button><br><br>
             </form>
         </div>
