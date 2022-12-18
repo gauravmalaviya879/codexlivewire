@@ -57,7 +57,9 @@ class Grouplist extends Component
     {
         $removedata =  group::where('group_id', $id);
         $imagpath = $removedata->first();
-        unlink(storage_path('/app/public/' .  $imagpath->logo));
+        if(file_exists(storage_path('/app/public/' . $imagpath->logo))){
+            unlink(storage_path('/app/public/' . $imagpath->logo));
+        }
         $removedata->delete();
         return redirect()->to('/home');
     }
