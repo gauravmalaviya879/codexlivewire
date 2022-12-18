@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::view('/','index');
+Route::view('/','login');
+Route::view('headerImport.','headerImport.');
 Route::view('livewireDemo','livewireDemo');
 Route::view('serch','userserch');
 Route::view('liveSher','liveDataSher');
