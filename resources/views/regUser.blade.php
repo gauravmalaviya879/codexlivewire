@@ -23,6 +23,7 @@
     }
 
     input[type=text],
+    input[type=email],
     input[type=password] {
         width: 100%;
         padding: 12px 20px;
@@ -84,16 +85,18 @@
 <div class="center">
      <!-- form register -->
      <div style="width: 25rem;">
-        <form action="">
+        <form action="register" method="post">
+            @csrf
             <h2 class="text-center">
                 user register
             </h2>
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-    
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <label for="name"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="name" required>
+                <label for="email "><b>email</b></label>
+                <input type="email" placeholder="Enter email" name="email" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
     
                 <button type="submit">ragistration</button>
             </div>

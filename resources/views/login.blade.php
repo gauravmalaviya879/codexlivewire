@@ -23,6 +23,7 @@
     }
 
     input[type=text],
+    input[type=email],
     input[type=password] {
         width: 100%;
         padding: 12px 20px;
@@ -81,19 +82,25 @@
 </style>
 @endsection
 @section('component')
+@if (session()->has('err'))
+    <div class="alert text-danger text-center alert-success">
+        {{ session('err') }}
+    </div>
+    @endif
 <div class="center">
      <!-- form login -->
      <div style="width: 25rem;">
-        <form action="">
+        <form action="cheackLogin" method="post">
+            @csrf
             <h2 class="text-center">
                 user login
             </h2>
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="email"><b>User email </b></label>
+                <input type="email" placeholder="Enter email" name="email" required>
     
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
     
                 <button type="submit">login</button>
             </div>

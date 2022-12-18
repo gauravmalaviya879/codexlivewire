@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\usersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::view('/','login')->name('login');
+Route::group(['middleware'=>'web'],function(){
+    Route::view('/','login')->name('login');
 Route::view('regUser','regUser')->name('registrationUser');
 Route::view('headerImport.','headerImport.');
 Route::view('livewireDemo','livewireDemo');
@@ -35,4 +36,9 @@ Route::get('profile',\App\Http\Livewire\profilemenu::class);
 
 //live crud
 Route::view('home','livewire.group');
+});
+
+Route::post('register',[usersController::class,'register']);
+Route::post('cheackLogin',[usersController::class,'cheackLogin']);
+
 
