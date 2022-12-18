@@ -95,7 +95,7 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
     
-                <button type="submit">reguser</button>
+                <button type="submit">login</button>
             </div>
             <a href="{{ route('registrationUser') }}">user register</a>
         </form>
