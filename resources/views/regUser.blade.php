@@ -82,11 +82,11 @@
 @endsection
 @section('component')
 <div class="center">
-     <!-- form login -->
+     <!-- form register -->
      <div style="width: 25rem;">
         <form action="">
             <h2 class="text-center">
-                user login
+                user register
             </h2>
             <div class="container">
                 <label for="uname"><b>Username</b></label>
@@ -95,9 +95,9 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
     
-                <button type="submit">reguser</button>
+                <button type="submit">Login</button>
             </div>
-            <a href="{{ route('registrationUser') }}">user register</a>
+            <a href="{{ route('login') }}">login</a>
         </form>
     </div>
     </div>
@@ -105,7 +105,3 @@
       <script src="{{ asset('assets/js/env.js') }}"></script>
       <script src="{{ asset('assets/js/index.js') }}"></script>
 @endsection
-
-
-
-
