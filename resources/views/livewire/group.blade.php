@@ -37,6 +37,8 @@
             {{ session('message') }}
         </div>
     @endif
+    {{-- logout user --}}
+    <button class="btn btn-danger">logout</button>
     @livewire('grouplist')
     @livewireScripts
 
