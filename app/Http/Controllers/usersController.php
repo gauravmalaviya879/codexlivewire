@@ -57,8 +57,8 @@ class usersController extends Controller
             return redirect('/'); 
         }
         elseif(Hash::check($request->password,$data['password']))
-        { try{
-
+        { 
+            try{
             $request->session()->put('username', $data['name']);
             $request->session()->put('email', $data['email']);
             $request->session()->put('password', $data['password']);
@@ -75,6 +75,13 @@ class usersController extends Controller
             return redirect('/');   
         }
      
+}
+function logout()
+{
+    if(session()->has('username')){
+        session()->flush();
+        return redirect('/');
+    }
 }
 
 }

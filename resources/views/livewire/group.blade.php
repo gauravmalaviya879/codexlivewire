@@ -39,7 +39,7 @@
         </div>
     @endif
     {{-- logout user --}}
-    <button class="btn btn-danger">logout</button>
+    <a class="btn btn-danger" href="{{ route('logout') }}">logout</a>
     @livewire('grouplist')
     @livewireScripts
 

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Session;
 
 class customAuth
 {
@@ -16,6 +17,14 @@ class customAuth
      */
     public function handle(Request $request, Closure $next)
     {
+         // path
+        // echo $path = $request->path();
+        // ($path != "/" && !session('username')) && ($path != "regUser" && !session('username'))
+       if(session('username')){
         return $next($request);
+       }else{
+        return redirect('/');
+       }
+       
     }
 }
