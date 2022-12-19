@@ -34,7 +34,7 @@ class usersController extends Controller
         if($result){
             return redirect('/'); 
         }else{
-            return json_encode(["status" => false,"message"=>"fetch not data", "data"=>$result]);
+            return json_encode(["status" => false,"message"=>"fetch not data"]);
         }
     }catch(\Exception $exception){
        dd($exception->getMessage());
@@ -82,6 +82,67 @@ function logout()
         session()->flush();
         return redirect('/');
     }
+}
+function registerApi(Request $request){
+    $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required|min:6|confirmed',
+    ]);
+
+    if($validator->fails()){
+        return response()->json($validator->errors()->toJson(), 400);
+    }
+    try{
+        $data = new User();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        // Hash::check($pw, $hashed)
+        $result = $data->save();
+        return response()->json([
+            'message' => 'User successfully registered',
+            'user' => $data
+        ]);
+    }catch(\Exception $exception){
+       dd($exception->getMessage());
+    }
+}
+function loginApi(Request $request){
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|string|email',
+        'password' => 'required|min:6',
+    ]);
+
+    if($validator->fails()){
+        return response()->json($validator->errors()->toJson(), 400);
+    }
+    try{
+        if (! $token = auth()->attempt($validator->validated())) {
+            return response()->json(['error' => 'Unauthorized']);
+        }
+        return $this->createNewToken($token);
+    }catch(\Exception $exception){
+       dd($exception->getMessage());
+    }
+}
+protected function createNewToken($token){
+    return response()->json([
+        'access_token' => $token,
+        'token_type' => 'bearer',
+        'expires_in' => auth()->factory()->getTTL() * 60,
+        'user' => auth()->user()
+    ]);
+}
+public function userProfile() {
+    return response()->json(auth()->user());
+}
+public function refresh() {
+    return $this->createNewToken(auth()->refresh());
+}
+public function logoutAuth() {
+    auth()->logout();
+    return response()->json(['message' => 'User successfully loged out']);
 }
 
 }
