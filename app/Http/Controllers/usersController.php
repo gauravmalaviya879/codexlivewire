@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
-
+use App\Models\group;
 
 class usersController extends Controller 
 {
@@ -144,5 +144,13 @@ public function logoutAuth() {
     auth()->logout();
     return response()->json(['message' => 'User successfully loged out']);
 }
-
+// 
+function groupdata(){
+    $grouplist = group::paginate('10');
+    return view('groupShow', ['grouplist' => $grouplist]);
+}
+function groupOfdetail($id){
+    $data = group::where('group_id', $id)->first();
+    return view('groupInfo', ['data' => $data]);
+}
 }

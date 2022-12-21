@@ -45,3 +45,5 @@ Route::get('logout',[usersController::class,'logout'])->name('logout');
 Route::post('register',[usersController::class,'register']);
 Route::post('cheackLogin',[usersController::class,'cheackLogin']);
 
+Route::get('groupData',[usersController::class,'groupdata'])->name('groupdata');
+Route::get('groupOfdetail/{id}',[usersController::class,'groupOfdetail'])->name('groupdetail');
